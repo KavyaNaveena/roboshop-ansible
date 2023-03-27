@@ -18,6 +18,7 @@ rule_files:
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
+
 scrape_configs:
   - job_name: 'roboshop-nodes'
     ec2_sd_configs:
@@ -27,6 +28,6 @@ scrape_configs:
           - name: "tag:Monitor"
             values: ["yes"]
 
-relabel_configs:
-  - source_labels: [_meta_ec2_tag_Name]
-    target_label: name
+    relabel_configs:
+      - source_labels: [__meta_ec2_tag_Name]
+        target_label: name
